@@ -17,8 +17,6 @@ FPS = 20
 speed_x = 0
 speed_y = 0
 
-print("Hello, Andrey!")
-
 while game:
     clock.tick(FPS)
     events = pygame.event.get()
