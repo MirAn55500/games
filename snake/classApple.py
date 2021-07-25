@@ -2,7 +2,7 @@ import pygame
 from random import randint
 
 
-print("Hey Apple!")
+print("Hey, Andrey!")
 
 class Apple():
     def __init__(self):
