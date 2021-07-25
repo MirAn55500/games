@@ -1,6 +1,9 @@
 import pygame
 from random import randint
 
+
+print("Hey Apple!")
+
 class Apple():
     def __init__(self):
         self.rect = pygame.Rect((randint(0, 39) * 20, randint(0, 29) * 20, 20, 20))
