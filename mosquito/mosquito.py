@@ -27,7 +27,9 @@ while game:
         if e.type == pygame.MOUSEBUTTONDOWN:
             if mosquito_rect.collidepoint(e.pos):
                 pygame.draw.circle(bg, 'red', e.pos, 15)
-                #mosquito = pygame.transform.scale(mosquito, (1, 1))
+                mosquito = pygame.transform.scale(mosquito, (1, 1))
+                mosquito = pygame.transform.scale(mosquito, (150, 150))
+                
 
 
     mosquito_rect.x += speed_x
