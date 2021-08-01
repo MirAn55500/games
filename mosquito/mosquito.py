@@ -4,10 +4,10 @@ import time
 
 main_display = pygame.display.set_mode((800, 600))
 bg = pygame.image.load('forest.jpg')
-mosquito = pygame.image.load('mosquito.png')
+mosquito_raw = pygame.image.load('mosquito.png')
 
 bg = pygame.transform.scale(bg, (800, 600))
-mosquito = pygame.transform.scale(mosquito, (150, 150))
+mosquito = pygame.transform.scale(mosquito_raw, (150, 150))
 mosquito_rect = mosquito.get_rect(x = randint(0, 700), y = randint(0, 500))
 
 game = True
@@ -27,8 +27,8 @@ while game:
         if e.type == pygame.MOUSEBUTTONDOWN:
             if mosquito_rect.collidepoint(e.pos):
                 pygame.draw.circle(bg, 'red', e.pos, 15)
-                mosquito = pygame.transform.scale(mosquito, (1, 1))
-                mosquito = pygame.transform.scale(mosquito, (150, 150))
+                mosquito = pygame.transform.scale(mosquito_raw, (1, 1))
+                mosquito = pygame.transform.scale(mosquito_raw, (150, 150))
                 
 
 
