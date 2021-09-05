@@ -1,6 +1,5 @@
 import pygame
 from random import randint
-import time
 
 main_display = pygame.display.set_mode((800, 600))
 bg = pygame.image.load('forest.jpg')
@@ -18,6 +17,7 @@ speed_x = 0
 speed_y = 0
 
 while game:
+    now = 0
     clock.tick(FPS)
     events = pygame.event.get()
     for e in events:
@@ -25,16 +25,21 @@ while game:
             game = False
 
         if e.type == pygame.MOUSEBUTTONDOWN:
+            click_time = pygame.time.get_ticks()
+
             if mosquito_rect.collidepoint(e.pos):
                 pygame.draw.circle(bg, 'red', e.pos, 15)
                 mosquito = pygame.transform.scale(mosquito_raw, (1, 1))
+                main_display.blit(mosquito, mosquito_rect)
+                now = pygame.time.get_ticks()
+                while now <= 1000 + click_time:
+                    now = pygame.time.get_ticks()
                 mosquito = pygame.transform.scale(mosquito_raw, (150, 150))
-                
+                main_display.blit(mosquito, mosquito_rect)
 
 
     mosquito_rect.x += speed_x
     mosquito_rect.y += speed_y
-    time.sleep(0.02)
     speed_x += randint(-2, 2)
     speed_y += randint(-2, 2)
     if speed_x > 5:
@@ -47,8 +52,6 @@ while game:
 
     if mosquito_rect.y > 450 or mosquito_rect.y < 0:
         speed_y *= -1
-
-
 
     main_display.blit(bg, (0, 0))
     main_display.blit(mosquito, mosquito_rect)
